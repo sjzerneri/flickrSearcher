@@ -1,19 +1,19 @@
 angular.module('flickrSearch', ['ngAnimate'])
 
-.controller('flickrCtrl', function ($scope, $http) {
-
-    $scope.searching = "Nothing To Search For Yet";
+.controller('flickrCtrl', function ($scope, $http, $q) {
 
     $scope.submit = function (searchTag) {
 
         var tag = $scope.input.searchTag;
 
-        console.log(tag);
+        $scope.searching = 'Searching for the tag ' + tag + ' ...';
+
+        var defer = $q.defer();
 
         var reqParams = {
             method: 'flickr.photos.search',
             api_key: '47c3c2b8fc1d1715986e7a3697bb8dd4',
-            tags: searchTag,
+            tags: tag,
             format: 'json',
             nojsoncallback: 1
         };
@@ -24,9 +24,12 @@ angular.module('flickrSearch', ['ngAnimate'])
 
         $http.get('https://api.flickr.com/services/rest', config)
             .then(function (response) {
-                console.log(tag);
+                console.log('success');
+                $scope.searching = 'Showing 25 results for ' + tag;
             }, function (response) {
-                console.log($scope.searching);
+                console.log('fail');
             });
+
+        return defer.promise;
     }
 });

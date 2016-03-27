@@ -14,7 +14,7 @@
 
     <section class="search">
         <form name="searchForm" ng-submit="submit()">
-            <input type="text" ng-model="input.searchTag" placeholder="Enter a tag to search for...">
+            <input type="text" ng-model="input.searchTag" placeholder="Enter a tag to search for..." required>
             <button type="submit"> Submit</button>
         </form>
         <h3> {{ searching }} </h3>
