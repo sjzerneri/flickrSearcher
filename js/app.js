@@ -21,5 +21,12 @@ angular.module('flickrSearch', ['ngAnimate'])
         var config = {
             params: reqParams
         };
+
+        $http.get('https://api.flickr.com/services/rest', config)
+            .then(function (response) {
+                console.log(tag);
+            }, function (response) {
+                console.log($scope.searching);
+            });
     }
 });
