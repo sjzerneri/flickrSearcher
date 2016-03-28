@@ -63,6 +63,10 @@ h3 {
     margin-top: 3rem;
 }
 
+ul {
+    list-style-type: none;
+}
+
 
 /* -------------------------------------
 Header styles (Main Module)

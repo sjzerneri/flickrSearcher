@@ -2,16 +2,11 @@ angular.module('flickrSearch', ['ngAnimate'])
 
 .controller('flickrCtrl', function ($scope, $http, $q) {
 
-    var flickrCall = this;
-    flickrCall.response = [];
-
     $scope.submit = function (searchTag) {
 
         var tag = $scope.input.searchTag;
 
         $scope.searching = 'Searching for the tag ' + tag + ' ...';
-
-        var defer = $q.defer();
 
         var reqParams = {
             method: 'flickr.photos.search',
@@ -27,8 +22,7 @@ angular.module('flickrSearch', ['ngAnimate'])
 
         $http.get('https://api.flickr.com/services/rest', config)
             .then(function (response) {
-                flickrCall.response = response;
-                console.log('Response Returned To Controller', flickrCall.response);
+
                 var results = response.data.photos.total;
 
                 $scope.array = response.data.photos.photo;
