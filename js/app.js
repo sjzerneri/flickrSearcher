@@ -31,9 +31,7 @@ angular.module('flickrSearch', ['ngAnimate'])
                 console.log('Response Returned To Controller', flickrCall.response);
                 var results = response.data.photos.total;
 
-                var photos = response.data.photos.photo;
-
-                console.log(photos);
+                $scope.array = response.data.photos.photo;
 
                 $scope.searching = 'Showing ' + results + ' results for ' + tag;
 

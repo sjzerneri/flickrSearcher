@@ -21,6 +21,11 @@
     </section>
 
     <section class="results">
+        <ul>
+            <li ng-repeat="photo in array">
+                <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt="Description" />
+            </li>
+        </ul>
 
     </section>
 
