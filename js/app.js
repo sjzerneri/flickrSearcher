@@ -2,9 +2,16 @@ angular.module('flickrSearch', ['ngAnimate'])
 
 .controller('flickrCtrl', function ($scope, $http, $q) {
 
+    $scope.reset = function () {
+        $scope.input.searchTag = '';
+        $scope.searchForm.$setPristine();
+    }
+
     $scope.submit = function (searchTag) {
 
         var tag = $scope.input.searchTag;
+
+        $scope.reset();
 
         $scope.searching = 'Searching for the tag ' + tag + ' ...';
 
